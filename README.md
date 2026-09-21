@@ -134,22 +134,26 @@ Latest result:
 ## Project Structure
 
 ```text
-ChequeConverter.Web
-├── Pages
-│   ├── Index.cshtml              User interface and browser interactions
-│   ├── Index.cshtml.cs           Server-side input validation and page logic
-│   └── Shared
-│       └── _Layout.cshtml        Shared page layout
-├── Services
-│   └── ChequeAmountConverter.cs  Number-to-words conversion logic
-├── wwwroot
-│   └── css
-│       └── site.css              Custom styling and responsive layout
-├── Program.cs                    Application configuration and startup
-└── README.md                     Project documentation
+## Project Structure
 
-ChequeConverter.Tests
-├── ChequeAmountConverterTests.cs Conversion-rule tests
-├── IndexModelTests.cs            User-input validation tests
-└── ChequeConverter.Tests.csproj  Test project configuration
+```text
+ChequeConverter
+├── ChequeConverter.sln
+├── README.md
+├── ChequeConverter.Web
+│   ├── Pages
+│   │   ├── Index.cshtml              User interface and browser interactions
+│   │   ├── Index.cshtml.cs           Server-side validation and page logic
+│   │   └── Shared
+│   │       └── _Layout.cshtml        Shared page layout
+│   ├── Services
+│   │   └── ChequeAmountConverter.cs  Number-to-words conversion logic
+│   ├── wwwroot
+│   │   └── css
+│   │       └── site.css              Custom styling and responsive layout
+│   └── Program.cs                    Application configuration and startup
+└── ChequeConverter.Tests
+    ├── ChequeAmountConverterTests.cs Conversion-rule tests
+    ├── IndexModelTests.cs            User-input validation tests
+    └── ChequeConverter.Tests.csproj  Test project configuration
 ```
