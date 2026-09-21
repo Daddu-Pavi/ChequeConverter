@@ -134,9 +134,6 @@ Latest result:
 ## Project Structure
 
 ```text
-## Project Structure
-
-```text
 ChequeConverter
 ├── ChequeConverter.sln
 ├── README.md
