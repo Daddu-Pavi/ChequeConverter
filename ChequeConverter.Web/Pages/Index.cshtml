@@ -1,0 +1,104 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Cheque Amount Converter";
+}
+
+<!-- Banner -->
+<section class="converter-banner">
+    <div class="banner-content">
+        <h1>
+            Cheque Amount
+            <span>Converter</span>
+        </h1>
+    </div>
+</section>
+
+<!-- Converter section -->
+<div class="converter-section">
+    <section class="converter-card">
+        <div class="section-heading">
+            <span class="heading-square" aria-hidden="true"></span>
+            <h2>Enter Cheque Amount</h2>
+            <span class="heading-square" aria-hidden="true"></span>
+        </div>
+
+        <form method="post" class="converter-form">
+            <div class="form-group">
+                <label for="amount">Cheque amount</label>
+
+                <input id="amount"
+                       name="Amount"
+                       type="text"
+                       inputmode="decimal"
+                       autocomplete="off"
+                       maxlength="20"
+                       placeholder="Enter an amount"
+                       value="@Model.Amount"
+                       aria-describedby="amountHelp"
+                       autofocus />
+            </div>
+
+            @if (Model.Error is not null)
+            {
+                <p class="validation-error" role="alert">
+                    @Model.Error
+                </p>
+            }
+
+            <div class="form-actions">
+                <button type="submit" class="app-button app-button-primary">
+                    Convert
+                </button>
+
+                <a asp-page="/Index"
+                   class="app-button app-button-outline">
+                    Reset
+                </a>
+            </div>
+        </form>
+
+        @if (Model.Result is not null)
+        {
+            <div class="conversion-result" aria-live="polite">
+                <p class="result-label">Amount in words</p>
+
+                <p id="resultText" class="result-text">
+                    @Model.Result
+                </p>
+
+                <button type="button"
+                        id="copyButton"
+                        class="app-button app-button-outline">
+                    Copy Words
+                </button>
+            </div>
+        }
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("copyButton")?.addEventListener(
+            "click",
+            async function () {
+                const resultText = document.getElementById("resultText");
+                const words = resultText?.textContent.trim();
+
+                if (!words) {
+                    return;
+                }
+
+                try {
+                    await navigator.clipboard.writeText(words);
+                    this.textContent = "Copied!";
+
+                    setTimeout(() => {
+                        this.textContent = "Copy Words";
+                    }, 2000);
+                } catch {
+                    this.textContent = "Could Not Copy";
+                }
+            });
+    </script>
+}
